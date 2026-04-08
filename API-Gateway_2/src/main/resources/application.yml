@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    gateway:
+      discovery.locator:
+        enabled: true
+        lowerCaseServiceId: true
+      routes:
+      - id: welcome1
+        uri: lb://Service-1
+        predicates:
+        - Path=/welcome1
+      - id: welcome2
+        uri: lb://Service-2
+        predicates:
+        - Path=/welcome2,/abc/**
+  application:
+    name: API-Gateway_2
+
+
+server:
+  port: 3333
+  
